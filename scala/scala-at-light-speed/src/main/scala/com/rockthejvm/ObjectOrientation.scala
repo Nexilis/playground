@@ -1,6 +1,7 @@
 package com.rockthejvm
 
 object ObjectOrientation extends App {
+  // extends App is java equivalent to: public static void main(String[] args)
 
   // class and instance
   class Animal {
@@ -77,5 +78,55 @@ object ObjectOrientation extends App {
   MySingleton.apply(65)
   MySingleton(65) // equivalent to above
 
-  // TODO: continue - https://youtu.be/sby4rxdmabI?t=1088
+  class Vehicle {
+    val age = 0
+  }
+  object Vehicle { // companion object (to Vehicle class)
+    // companions can access each other's private fields/methods
+    val canRunIndefinitely = false
+  }
+  val carRunsForever = Vehicle.canRunIndefinitely // "static" fields/methods
+
+  /*
+    case classes = lightweight data structures with boilerplate
+    - sensible equals and hash code
+    - serialization
+    - companion with apply
+    - pattern matching
+   */
+  case class Person(name: String, age: Int)
+
+  // may be constructed without new
+  val bob = Person("Bob", 54) // same as Person.apply("Bob", 54)
+
+  /*
+  exceptions
+   */
+  try {
+    val x: String = null
+    x.length
+  } catch {
+    case _: Exception => "some error message"
+  } finally {
+    // execute code no matter what
+  }
+
+  /*
+  generics
+   */
+  abstract class MyList[T] {
+    def head: T
+    def tail: MyList[T]
+  }
+
+  // using a generic with a concrete type
+  val aList: List[Int] = List(1,2,3) // List.apply(1,2,3)
+  val first = aList.head
+  var rest = aList.tail
+  val aStringList = List("hello", "Scala")
+  val firstString = aStringList.head
+
+  // POINT #1: Scala usually operates with immutable values - YAY! :)
+  // POINT #2: Scala is closest to the OO ideal
+
 }
