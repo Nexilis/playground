@@ -6,7 +6,18 @@
 
 (var camera-x-rotation (.. "Camera x rotation is: " (tostring camera.x-rotate)))
 
-;; todo: impl sphere-distance
+(fn sphere-distance [{:pos [sx sy sz] : radius} [x y z]]
+    (-
+        (math.sqrt
+            (+
+                (^ (- sx x) 2)
+                (^ (- sy y) 2)
+                (^ (- sz z) 2)
+            )
+        )
+        radius
+    )
+)
 
 (fn sphere [radius pos color]
     (let [[x y z] (or pos [0 0 0])
@@ -21,4 +32,7 @@
 )
 
 (fn love.draw []
-    (love.graphics.print camera-x-rotation))
+    (love.graphics.print (sphere-distance (sphere 5) [5 0 0]) 0 0) ;; should be 0.0
+    (love.graphics.print (sphere-distance (sphere 5) [0 15 0]) 0 15) ;; should be 10.0
+    (love.graphics.print (sphere-distance (sphere 5) [0 0 0]) 0 30) ;; should be -5.0
+    (love.graphics.print camera-x-rotation 0 40))
