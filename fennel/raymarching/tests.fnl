@@ -1,9 +1,12 @@
 (local lu (require :luaunit))
-(local sut (require :logic))
+(local logic (require :logic))
 
 (global TestSuite {})
 
-(fn TestSuite.test-true-is-true []
-    (lu.assertEquals true true))
+(fn TestSuite.sphere-distance-is-correct []
+    (let [sphere (logic.sphere 5)
+          actual (logic.sphere-distance sphere [5 0 0])]
+        (lu.assertEquals actual 0))
+    )
 
 (os.exit (lu.LuaUnit.run))
