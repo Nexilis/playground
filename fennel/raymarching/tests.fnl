@@ -1,5 +1,5 @@
 (local lu (require :luaunit))
-;(local sut (require :main))
+(local sut (require :logic))
 
 (global TestSuite {})
 

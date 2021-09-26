@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
-fennel --compile main.fnl > main.lua
-fennel --compile tests.fnl > tests.lua && lua tests.lua -v
+sh compile.sh
+mkdir -p tests
+cp bin/logic.lua tests/logic.lua
+fennel --compile tests.fnl > tests/tests.lua
+(cd tests && lua tests.lua -v)
 

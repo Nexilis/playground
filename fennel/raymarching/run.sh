@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 
-fennel --compile main.fnl > main.lua
+sh compile.sh
+love bin/.
 
-love .
