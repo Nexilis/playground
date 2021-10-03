@@ -2,13 +2,15 @@
 
 ## Dependencies
 
-- Fennel, readline (install via luarocks)
+`luarocks install --local fennel`
+`luarocks install --local readline`
+`luarocks install --local luaunit`
 - LÖVE - 2d game engine (ppa:bartbes/love-stable or dnf)
-- luaunit (in this repo)
 
 ## Compile and run
 
-Compile and run using ./`run.sh`.
+Compile and run using `sh run.sh`.
+Run unit tests using `sh test.sh`.
 
 ## Based on
 
