@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
 mkdir -p bin
-fennel --compile logic.fnl > bin/logic.lua
-fennel --compile main.fnl > bin/main.lua
+fennel --compile src/logic.fnl > bin/logic.lua
+fennel --compile src/main.fnl > bin/main.lua
 
