@@ -1,12 +1,25 @@
 (local lu (require :luaunit))
 (local logic (require :logic))
 
-(global TestSuite {})
+(global Tests {})
 
-(fn TestSuite.test-sphere-distance []
-    (let [sphere (logic.sphere 5)
-          actual (logic.sphere-distance sphere [5 0 0])]
-        (lu.assertEquals actual 0)
+(fn Tests.test-sphere-distance []
+    (let [radius 5
+          sphere (logic.sphere radius)
+          test-data [{"expected-distance" 0
+                      "sphere-position" [5 0 0]}
+                     {"expected-distance" 10
+                      "sphere-position" [0 15 0]}
+                     {"expected-distance" -5
+                      "sphere-position" [0 0 0]}]
+          ]
+
+        (each [index value (ipairs test-data)]
+            (let [sphere-position (. value "sphere-position")
+                  actual (logic.sphere-distance sphere sphere-position)]
+                (lu.assertEquals actual (. value "expected-distance"))
+            )
+        )
     )
 )
 
