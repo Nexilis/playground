@@ -3,10 +3,11 @@
 
 (global TestSuite {})
 
-(fn TestSuite.sphere-distance-is-correct []
+(fn TestSuite.test-sphere-distance []
     (let [sphere (logic.sphere 5)
           actual (logic.sphere-distance sphere [5 0 0])]
-        (lu.assertEquals actual 0))
+        (lu.assertEquals actual 0)
     )
+)
 
 (os.exit (lu.LuaUnit.run))
