@@ -6,7 +6,7 @@
 
 (var scene [])
 
-(fn Logic.sphere-distance [{:pos [sx sy sz] : radius} [x y z]]
+(fn Logic.calc-sphere-distance [{:pos [sx sy sz] : radius} [x y z]]
     (-
         (math.sqrt
             (+
@@ -19,13 +19,13 @@
     )
 )
 
-(fn Logic.sphere [radius pos color]
+(fn Logic.create-sphere [radius pos color]
     (let [[x y z] (or pos [0 0 0])
           [r g b] (or color [1 1 1])]
         {:radius (or radius 5)
          :pos [(or x 0) (or y 0) (or z 0)]
          :color [(or r 0) (or g 0) (or b 0)]
-         :sdf sphere-distance
+         :sdf Logic.calc-sphere-distance
          ;; sdf explained here https://en.wikipedia.org/wiki/Signed%5Fdistance%5Ffunction
          }
     )
