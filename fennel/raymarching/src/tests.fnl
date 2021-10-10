@@ -14,10 +14,10 @@
                       :sphere-position [0 0 0]}]
           ]
 
-        (each [index value (ipairs test-data)]
-            (let [sphere-position (. value :sphere-position)
+        (each [_ value (ipairs test-data)]
+            (let [sphere-position value.sphere-position
                   actual (logic.sphere-distance sphere sphere-position)]
-                (lu.assertEquals actual (. value :expected-distance))
+                (lu.assertEquals actual value.expected-distance)
             )
         )
     )
