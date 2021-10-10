@@ -1,9 +1,12 @@
 (global Logic {})
 
+(local DRAW-DISTANCE 1000)
+
 (var camera {:pos [0.0 0.0 0.0]
              :x-rotate 0.0
              :z-rotate 0.0})
 
+;; collection of objects, e.g. sphere1, sphere2 ...
 (var scene [])
 
 (fn Logic.calc-sphere-distance [{:pos [sx sy sz] : radius} [x y z]]
@@ -29,6 +32,21 @@
          ;; sdf explained here https://en.wikipedia.org/wiki/Signed%5Fdistance%5Ffunction
          }
     )
+)
+
+;; in docs def. as (fn distance-estimator ...)
+(fn Logic.estimate-distance [point scene]
+    (var min DRAW-DISTANCE)
+    (var color [0 0 0])
+    (each [_ object (ipairs scene)]
+        (let [distance (object:sdf point)]
+            (when (< distance min)
+                (set min distance)
+                (set color (. object :color))
+            )
+        )
+    )
+    (values min color)
 )
 
 Logic
