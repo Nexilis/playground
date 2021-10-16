@@ -37,4 +37,17 @@
     )
 )
 
+(fn Tests.test-vector-creation []
+    (let [vec1 (vector.create-vec)
+          vec2 (vector.create-vec 3)
+          vec3 (vector.create-vec 5 7)
+          vec4 (vector.create-vec 3 2 1)
+         ]
+        (lu.assertEquals vec1 [0 0 0])
+        (lu.assertEquals vec2 [3 3 3])
+        (lu.assertEquals vec3 [5 7 0])
+        (lu.assertEquals vec4 [3 2 1])
+    )
+)
+
 (os.exit (lu.LuaUnit.run))
