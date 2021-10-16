@@ -1,5 +1,6 @@
 (local lu (require :luaunit))
 (local logic (require :logic))
+(local vector (require :vector))
 
 (global Tests {})
 
