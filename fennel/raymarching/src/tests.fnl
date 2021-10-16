@@ -24,18 +24,15 @@
 )
 
 (fn Tests.test-estimate-distance-func []
-    (let [point [5 4 0]
-          sphere1 (logic.create-sphere)
-          s2-radius 2
-          s2-pos [5 7 0]
-          s2-color [0 1 0]
-          sphere2 (logic.create-sphere s2-radius s2-pos s2-color)
+    (let [point [10 0 0]
+          sphere1 (logic.create-sphere 5 [0 0 0] [254 254 254])
+          sphere2 (logic.create-sphere 1 [5 0 0] [100 100 100])
           scene [sphere1 sphere2]
-          ;; todo: fix - estimate distance is returning 'something else' :thinking-face:
-          [actual-distance actual-color] (logic.estimate-distance point scene)
+          ;; in Fennel destructuring of multiple values is done with parens instead of square brackets
+          (actual-distance actual-color) (logic.estimate-distance point scene)
          ]
-        (lu.assertEquals actual-distance 3)
-        (lu.assertEquals actual-color [255 255 255])
+        (lu.assertEquals actual-distance 4)
+        (lu.assertEquals actual-color [100 100 100])
     )
 )
 
