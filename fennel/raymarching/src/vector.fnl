@@ -17,4 +17,11 @@
     )
 )
 
+(fn Vector.subtract [[x0 y0 z0] [x1 y1 z1]]
+    [(- x0 x1)
+     (- y0 y1)
+     (- z0 z1)
+    ]
+)
+
 Vector

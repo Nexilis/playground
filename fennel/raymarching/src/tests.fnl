@@ -61,4 +61,15 @@
     )
 )
 
+(fn Tests.test-vector-subtraction []
+    (let [actual1 (vector.subtract [1 2 3] [1 3 3])
+          actual2 (vector.subtract [10 11 12] [0 0 0])
+          actual3 (vector.subtract [0 0 0] [-3 -2 -1])
+         ]
+        (lu.assertEquals actual1 [0 -1 0])
+        (lu.assertEquals actual2 [10 11 12])
+        (lu.assertEquals actual3 [3 2 1])
+    )
+)
+
 (os.exit (lu.LuaUnit.run))
