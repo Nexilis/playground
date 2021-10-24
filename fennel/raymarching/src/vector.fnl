@@ -7,4 +7,14 @@
     )
 )
 
+(fn Vector.length [[x y z]]
+    (math.sqrt
+        (+
+            (^ x 2)
+            (^ y 2)
+            (^ z 2)
+        )
+    )
+)
+
 Vector

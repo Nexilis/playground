@@ -50,4 +50,15 @@
     )
 )
 
+(fn Tests.test-vector-length-func []
+    (let [actual1 (vector.length (vector.create-vec 1 0 0))
+          actual2 (vector.length (vector.create-vec 0 0 10))
+          actual3 (vector.length (vector.create-vec 1 3 6))
+         ]
+        (lu.assertEquals actual1 1)
+        (lu.assertEquals actual2 10)
+        (lu.assertEquals (math.ceil actual3) 7)
+    )
+)
+
 (os.exit (lu.LuaUnit.run))
