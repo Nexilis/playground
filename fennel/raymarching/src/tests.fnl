@@ -72,4 +72,26 @@
     )
 )
 
+(fn Tests.test-vector-addition []
+    (let [actual1 (vector.add [1 2 3] [1 3 3])
+          actual2 (vector.add [10 11 12] [0 0 0])
+          actual3 (vector.add [0 0 0] [-3 -2 -1])
+         ]
+        (lu.assertEquals actual1 [2 5 6])
+        (lu.assertEquals actual2 [10 11 12])
+        (lu.assertEquals actual3 [-3 -2 -1])
+    )
+)
+
+(fn Tests.test-vector-multiplication []
+    (let [actual1 (vector.multiply [1 2 3] [1 3 3])
+          actual2 (vector.multiply [10 11 12] [0 0 0])
+          actual3 (vector.multiply [1 -2 3] [-3 -2 -1])
+         ]
+        (lu.assertEquals actual1 [1 6 9])
+        (lu.assertEquals actual2 [0 0 0])
+        (lu.assertEquals actual3 [-3 4 -3])
+    )
+)
+
 (os.exit (lu.LuaUnit.run))
