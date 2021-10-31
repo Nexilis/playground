@@ -38,4 +38,15 @@
     ]
 )
 
+(fn Vector.normalize [v]
+    (let [len (Vector.length v)
+          [x y z] v
+         ]
+         [(/ x len)
+          (/ x len)
+          (/ x len)
+         ]
+    )
+)
+
 Vector
